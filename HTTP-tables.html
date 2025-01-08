@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Таблица 1: Стартовая строка HTTP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        color: rgb(12, 188, 12);
+        background-color: #000;
+        line-height: 1.5;
+        overflow: auto;
+      }
+      h1 {
+        color: rgb(12, 188, 12);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead {
+        color: rgb(18, 215, 44);
+        background-color: rgb(22, 3, 61);
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      tr:nth-child(even) {
+        background-color: #222222;
+      }
+      code {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #3316da;
+        padding: 4px;
+        border-radius: 4px;
+        color: #fff;
+        line-height: 0.9;
+      }
+      code span {
+        margin-left: 20px;
+      }
+      @media screen and (max-width: 600px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+        thead tr {
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+        tr {
+          margin: 0 0 1rem 0;
+        }
+        td {
+          border: none;
+          border-bottom: 1px solid #ddd;
+          position: relative;
+          padding-left: 50%;
+        }
+        td:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          padding-right: 10px;
+          white-space: nowrap;
+        }
+        td:before {
+          content: attr(data-label);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Таблица 1: Стартовая строка</h1>
+    <h3>Определяет тип запроса или ответа</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Компонент</th>
+          <th>HTTP-запрос (Request)</th>
+          <th>HTTP-ответ (Response)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Компонент">Описание</td>
+          <td data-label="HTTP-запрос (Request)">
+            Определяет тип запроса, ресурс и версию HTTP.
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Определяет версию HTTP, статус выполнения запроса и пояснение.
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Формат</td>
+          <td data-label="HTTP-запрос (Request)">
+            &lt;Метод&gt; &lt;URL&gt; &lt;Версия HTTP&gt;
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            &lt;Версия HTTP&gt; &lt;Код состояния&gt; &lt;Пояснение&gt;
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Обязательные данные</td>
+          <td data-label="HTTP-запрос (Request)">
+            - Метод (например, GET, POST)<br />
+            - URI (например, /index.html)<br />
+            - Версия HTTP (например, HTTP/1.1)
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            - Версия HTTP (например, HTTP/1.1)<br />
+            - Код состояния (например, 200)<br />
+            - Пояснение (например, OK)
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Примеры</td>
+          <td data-label="HTTP-запрос (Request)">
+            - GET /index.html HTTP/1.1<br />
+            - POST /api/data HTTP/1.1<br />
+            - DELETE /users/123 HTTP/2
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            - HTTP/1.1 200 OK<br />
+            - HTTP/1.1 404 Not Found<br />
+            - HTTP/2 500 Internal Server Error
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Особенности в fetch</td>
+          <td data-label="HTTP-запрос (Request)">
+            - Метод GET используется по умолчанию, если не указан другой
+            метод.<br />
+            - Версия HTTP определяется сервером и клиентом автоматически.
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Версия HTTP опеределяется сервером автоматически
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h1>Таблица 2: Заголовки</h1>
+    <h3>Содержат дополнительную информацию о запросе или ответе</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Компонент</th>
+          <th>HTTP-запрос (Request)</th>
+          <th>HTTP-ответ (Response)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Компонент">Описание</td>
+          <td data-label="HTTP-запрос (Request)">
+            Содержат метаинформацию о запросе, например, тип данных, cookies,
+            информация о клиенте.
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Содержат метаинформацию об ответе, например, тип данных, сервер,
+            cookies и т.д.
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Обязательные данные</td>
+          <td data-label="HTTP-запрос (Request)">
+            - Заголовок Host (обязателен для HTTP/1.1)
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Нет строго обязательных заголовков
+          </td>
+        </tr>
+
+        <tr>
+          <td data-label="Компонент">Примеры</td>
+          <td data-label="HTTP-запрос (Request)">
+            Обязательные заголовки:<br />
+            <code
+              >- Host: www.example.com <br />- Content-Type: application/json
+              (если тело запроса — JSON). </code
+            ><br />Необязательные заголовки:<br />
+            <code
+              >- User-Agent: Mozilla/5.0 <br />- Accept: text/html <br />-
+              Authorization: Bearer token <br />- Cookie: sessionid=abc123</code
+            >
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Часто используемые заголовки:<br />
+            <code>
+              - Content-Type: text/html <br />- Content-Length: 1234 <br />-
+              Server: Apache/2.4.1 <br />- Set-Cookie: sessionid=12345 <br />-
+              Cache-Control: no-cache
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Особенности в fetch</td>
+          <td data-label="HTTP-запрос (Request)">
+            Заголовки задаются в объекте headers.<br />
+            <code
+              >headers: { <br /><span>'Content-Type': 'application/json', </span
+              ><br /><span>'Authorization': 'Bearer token' <br />}</span></code
+            >
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Заголовки ответа доступны через объект Response.
+            <code>response.headers.get('Content-Type')</code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Таблица 3: Тело</h1>
+    <h3>Передает данные, если они есть</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Компонент</th>
+          <th>HTTP-запрос (Request)</th>
+          <th>HTTP-ответ (Response)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Компонент">Описание</td>
+          <td data-label="HTTP-запрос (Request)">
+            Содержит данные, отправляемые на сервер (например, JSON, данные
+            формы).
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Содержит данные, возвращаемые сервером (например, HTML, JSON, файл).
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Обязательные данные</td>
+          <td data-label="HTTP-запрос (Request)">
+            Тело обязательно для методов POST, PUT, PATCH. Для GET и DELETE тело
+            обычно отсутствует.
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            Тело не обязательно для кодов состояния 204 No Content и 304 Not
+            Modified. Для 200 OK тело обычно присутствует.
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Примеры</td>
+          <td data-label="HTTP-запрос (Request)">
+            <strong>JSON:</strong><br />
+            <code
+              >body: JSON.stringify({"username": "user123", <br />"password":
+              "pass123"})</code
+            ><br />
+            <strong>Форма:</strong><br />
+            <code>username=user123&amp;password=pass123</code>
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            <strong>HTML:</strong><br />
+            <code
+              >&lt;html&gt;<br />&lt;head&gt;&lt;title&gt;Example
+              Page&lt;/title&gt;&lt;/head&gt;<br />&lt;body&gt;&lt;h1&gt;Hello,
+              World!&lt;/h1&gt;&lt;/body&gt;<br />&lt;/html&gt;</code
+            ><br />
+            <strong>JSON:</strong><br />
+            <code
+              >{"status": "success", "data": {"id": 1, "name": "John
+              Doe"}}</code
+            >
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Компонент">Особенности в fetch</td>
+          <td data-label="HTTP-запрос (Request)">
+            <code>body: JSON.stringify({ key: 'value' })</code><br />
+            Для GET и DELETE тело не используется.
+          </td>
+          <td data-label="HTTP-ответ (Response)">
+            <code>response.json().then(data => console.log(data))</code><br />
+            Тело ответа доступно через методы response.json(), response.text(),
+            response.blob() и др.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
